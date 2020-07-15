@@ -13,14 +13,14 @@ public class boj_2581 {
 		Integer start=Integer.valueOf(bf.readLine());
 		Integer end=Integer.valueOf(bf.readLine());
 		
-		Integer sum=IntStream.range(start,end)
+		Integer sum=IntStream.range(start,end+1)
 				.filter(i->prime(i))
 				.sum();
 		if(sum<1) {
 			System.out.println(-1);	
 		}else {
 		OptionalInt result=
-				IntStream.range(start,end)
+				IntStream.range(start,end+1)
 				.filter(i->prime(i))
 				.findFirst();
 		System.out.println(sum+"\n"+result.getAsInt());
