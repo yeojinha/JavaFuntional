@@ -16,14 +16,14 @@ public class boj_2581 {
 		Integer sum=IntStream.range(start,end)
 				.filter(i->prime(i))
 				.sum();
-		if(sum==0) {
+		if(sum<1) {
 			System.out.println(-1);	
 		}else {
 		OptionalInt result=
 				IntStream.range(start,end)
 				.filter(i->prime(i))
 				.findFirst();
-		System.out.println(result.getAsInt());
+		System.out.println(sum+"\n"+result.getAsInt());
 	}
 		}
 	private static boolean prime(int n) {
