@@ -1,10 +1,6 @@
-
-
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 
 public class boj_1748 {
 	/*
@@ -16,15 +12,12 @@ public class boj_1748 {
 	 */
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
+		//BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
 		int N=Integer.parseInt(br.readLine());
-		if(N<10) {
-			bw.write(N);
-		}
-		int num=100;//100자리가 되면
-		int length=2;
-		int count=9;//10이상이면 9부터 시작해야함.
-		for(int i=10;i<=N;i++) {//1자리수면 1자리수만 더함 2자리수면 두자리 더함
+		int num=10;//100자리가 되면
+		int length=1;
+		int count=0;//10이상이면 9부터 시작해야함.
+		for(int i=1;i<=N;i++) {//1자리수면 1자리수만 더함 2자리수면 두자리 더함
 			
 			if(i==num) {
 				length++;
@@ -36,9 +29,9 @@ public class boj_1748 {
 			//1000이되면 4자리
 			//10000되면 5자리
 		}
-		//System.out.println(count);
-		bw.write(count);
-		bw.flush();
+		System.out.println(count);
+		//bw.write(count);
+		//bw.flush();
 	}
 
 }
