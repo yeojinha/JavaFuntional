@@ -20,8 +20,8 @@ public class boj_12756 {
 	while(pys[1].hp>0 && pys[0].hp>0) {
 		pys[1].hp-=pys[0].atk;
 		pys[0].hp-=pys[1].atk;
-		System.out.println(pys[1].hp);
-		System.out.println(pys[0].hp);
+		//System.out.println(pys[1].hp);
+		//System.out.println(pys[0].hp);
 	}
 	
 	if(pys[1].hp <=0 && pys[0].hp<=0) {

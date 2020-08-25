@@ -6,7 +6,19 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
-
+/*
+ * 10 10
+WWBBWWWBBW
+WBBWBWWWWB
+WBWBWWBBWW
+WBBBBBBBWW
+WBBWWWBWWW
+WBBBBBWWBB
+WWBWWBWWBB
+BWWBBWWWBB
+BBWBBBBBWB
+WWWBBBWWWB
+ */
 public class boj_1018 {
 	static int b_cnt = 0;
 	static int w_cnt = 0;
@@ -33,12 +45,13 @@ public class boj_1018 {
 
 	public static void count(char[][] map, int N, int M) {
 		int[] leftUp = { 0, 8, 0, 8 };// 고전적인 순서 0,0 x,y좌표 시작점
-		int[] rightUp = { Math.abs(N - 8), N, 0, 8 };
+		int[] rightUp = { Math.abs(N - 8), N, 0, 8 };//10-8  2 3 4 5 6 7 8 9
 		int[] leftDown = { 0, 8, Math.abs(M - 8), M };
 		int[] rightDown = { Math.abs(N - 8), N, Math.abs(M - 8), M };
 		
 		List<int[]> list = Arrays.asList(leftUp, rightUp, leftDown, rightDown);
 		for (int[] arr : list) {
+			b_cnt=0;
 			for (int i = arr[0]; i < arr[1]; i++) {// 0,0 Black일때,
 				for (int j = arr[2]; j < arr[3]; j++) {
 					if (i % 2 == 0) {// 짝수행
@@ -56,10 +69,11 @@ public class boj_1018 {
 					}
 				}
 			}
+			System.out.println("b_cnt: "+b_cnt);
 			if (b_min > b_cnt) b_min = b_cnt;
-			b_cnt=0;
 		}
 		for (int[] arr : list) {
+			w_cnt = 0;
 			for (int i = arr[0]; i < arr[1]; i++) {// 0,0 Black일때,
 				for (int j = arr[2]; j < arr[3]; j++) {
 					if (i % 2 == 0) {// 짝수행
@@ -77,10 +91,11 @@ public class boj_1018 {
 					}
 				}
 			}
+			System.out.println("w_cnt: "+w_cnt);
 			if(w_min>w_cnt) w_min=w_cnt;
-			w_cnt = 0;
+			
 		}
-
+		//System.out.println("w_min: "+w_min);
 	}
 
 }

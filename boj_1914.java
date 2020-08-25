@@ -24,12 +24,13 @@ public class boj_1914 {
 	}
 	private static void hanoi(int n,int x,int y) {
 		if(n>1)
-			hanoi(n-1,x,6-x-y);
+			hanoi(n-1,x,6-x-y);//n-1,1,2 1번의 n-1번 타워를 2번으로 이동
 				sb.append(x+" "+y+"\n");
 		if(n>1)
-			hanoi(n-1,6-x-y,y);
-		
-		
+			hanoi(n-1,6-x-y,y);//2번의 n-1번의 타워를 3번으로 이동
+		/*
+		 * 
+		 */
 		
 		
 		/*if(n>1)
