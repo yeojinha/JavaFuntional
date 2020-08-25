@@ -12,5 +12,5 @@ public class CountDiv {
 	        }
 	        return B/K - A/K;
 	    }
-	
+	//단순 for문으로 할 경우 performance 부분에서 많은 저하가 발생
 }
