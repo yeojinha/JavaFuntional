@@ -1,14 +1,15 @@
 package Codility;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class OddOccurrencesInArray {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int []A= {9, 3, 9, 3, 9, 7, 9};
+		int ans=Solution_3(A);
+		System.out.println("ans: "+ans);
 	}
 	static public int Solution (int []A){
 		int ans=0;
@@ -30,6 +31,26 @@ public class OddOccurrencesInArray {
 		
 		
 		return ans;
+	}static public int Solution_2(int []A){
+		Set<Integer> set=new HashSet<>();
+		for(int i:A) {
+			if(!set.contains(i)) {
+				set.add(i);
+			}else
+				set.remove(i);
+		}
+		int ans=set.iterator().next();
+		return ans;
+	}
+	static public int Solution_3(int []A){
+		int ans=0;
+		
+		for(int i=0;i<A.length;i++) {
+			ans=ans^A[i];
+			System.out.println("xor: "+ans +" binary: "+Integer.toBinaryString(ans));
+		}
+		return ans;
+		
 	}
 
 }
