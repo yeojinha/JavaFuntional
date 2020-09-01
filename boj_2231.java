@@ -9,7 +9,7 @@ public class boj_2231 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		int number=Integer.parseInt(br.readLine());	
-		if(!solution(number))
+		if(!solution(number))//1
 			System.out.println(0);
 	}
 	public static boolean solution(int num) {
