@@ -22,7 +22,7 @@ public class boj_2231 {
 			value=i;//만약 temp+ temp의 각 자릿수가 많으면 이 변수를 출력
 			for(int j=0;j<text.length();j++) {//text의 길이 만큼 반복
 				temp+=Integer.valueOf(text.charAt(j))-48;//'0'==48이다 charAt으로 바꾸면 "1"은 49임
-				//이거 생각해서 각 자릿 수의 값을 temp에 더함
+				//이거 생각해서 각 자릿 수의 값을 temp에 더함~12312313
 			}
 			//System.out.println();
 			if(temp==num){
