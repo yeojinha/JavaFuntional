@@ -7,7 +7,35 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
-
+/*
+ë°”ë¡œ ì‹œì‘ì‹œê°„ì„ ê¸°ì¤€ìœ¼ë¡œ ì •ë ¬í•  ê²½ìš° 
+11
+1 4
+3 5
+0 6
+5 7
+3 8
+5 9
+6 10
+8 11
+8 12
+2 13
+12 14
+ì„ inputìœ¼ë¡œ ë„£ìœ¼ë©´
+ì•„ë˜ì˜ ê²°ê³¼ê°€ ë‚˜ì˜¤ë¯€ë¡œ ë¬¸ì œê°€ ìƒê¸´ë‹¤.
+0 6
+1 4
+2 13
+3 5
+3 8
+5 7
+5 9
+6 10
+8 11
+8 12
+12 14
+3
+*/
 public class boj_1931 {
 	static int cnt=1;
 	public static void main(String[] args) throws IOException{
@@ -49,8 +77,8 @@ class timeTable implements Comparable<timeTable>{
 		this.end=end;
 	}
 	public int compareTo(timeTable o) {
-		int i=this.end-o.end;//³¡³ª´Â ½Ã°£ÀÌ °°´Ù¸é (i==0)
-		if(i==0) i=this.start-o.start;//start¸¦ ±âÁØÀ¸·Î ´Ù½Ã Á¤·ÄÇÏÀÚ. 
+		int i=this.end-o.end;//ëë‚˜ëŠ” ì‹œê°„ì´ ê°™ë‹¤ë©´ (i==0)
+		if(i==0) i=this.start-o.start;//startë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë‹¤ì‹œ ì •ë ¬í•˜ì. 
 		return i;//
 	}
 }
