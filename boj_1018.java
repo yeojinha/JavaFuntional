@@ -1,11 +1,9 @@
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.List;
 import java.util.StringTokenizer;
+
 /*
  * 10 10
 WWBBWWWBBW
@@ -20,16 +18,18 @@ BBWBBBBBWB
 WWWBBBWWWB
  */
 public class boj_1018 {
-	static int b_cnt = 0;
-	static int w_cnt = 0;
-	static int b_min = 64;
-	static int w_min = 64;
+
+	static String[] white = { "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB",
+			"BWBWBWBW" };
+	static String[] black = { "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW",
+			"WBWBWBWB" };
+
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer stk = new StringTokenizer(br.readLine(), " ");
 		int N = Integer.parseInt(stk.nextToken());
 		int M = Integer.parseInt(stk.nextToken());
-
+		int min = Integer.MAX_VALUE;
 		char[][] map = new char[N][M];
 		for (int i = 0; i < N; i++) {
 			String num = br.readLine();
@@ -37,65 +37,69 @@ public class boj_1018 {
 				map[i][j] = num.charAt(j);
 			}
 		}
+		// 13-7
+		for (int i = 0; i < N - 7; i++) {//
+			for (int j = 0; j < M - 7; j++) {
+				//int temp = Math.min(b_count(map, i, j), w_count(map, i, j));
+				min=Math.min(count(map,i,j),min);
+				/*if (min > temp) {
+					min = temp;
+				}*/
 
-		count(map, N, M);
-		System.out.println(Math.min(b_min, w_min));
+			}
+		}
+		System.out.println(min);
 
 	}
 
-	public static void count(char[][] map, int N, int M) {
-		int[] leftUp = { 0, 8, 0, 8 };// ∞Ì¿¸¿˚¿Œ º¯º≠ 0,0 x,y¡¬«• Ω√¿€¡°
-		int[] rightUp = { Math.abs(N - 8), N, 0, 8 };//10-8  2 3 4 5 6 7 8 9
-		int[] leftDown = { 0, 8, Math.abs(M - 8), M };
-		int[] rightDown = { Math.abs(N - 8), N, Math.abs(M - 8), M };
-		
-		List<int[]> list = Arrays.asList(leftUp, rightUp, leftDown, rightDown);
-		for (int[] arr : list) {
-			b_cnt=0;
-			for (int i = arr[0]; i < arr[1]; i++) {// 0,0 Black¿œ∂ß,
-				for (int j = arr[2]; j < arr[3]; j++) {
-					if (i % 2 == 0) {// ¬¶ºˆ«‡
-						if (j % 2 == 0) {// ¬¶ºˆø≠
-							b_cnt += map[i][j] != 'B' ? 1 : 0;// ¬¶ºˆ«‡¿« ¬¶ºˆø≠¿∫ B
-						} else {// »¶ºˆø≠
-							b_cnt += map[i][j] != 'W' ? 1 : 0;// ¬¶ºˆ«‡¿« »¶ºˆø≠¿∫ W;
-						}
-					} else {// »¶ºˆ«‡
-						if (j % 2 != 1) {// »¶ºˆ«‡
-							b_cnt += map[i][j] != 'W' ? 1 : 0;
-						} else {// ¬¶ºˆ«‡
-							b_cnt += map[i][j] != 'B' ? 1 : 0;
-						}
-					}
+	public static int count(char[][] map, int x, int y) {
+		// black
+		int b_cnt = 0;
+		for (int i = x; i < x + 8; i++) {
+			for (int j = y; j < y + 8; j++) {
+				if (map[i][j] != black[i - x].charAt(j - y)) {
+					b_cnt++;
 				}
 			}
-			System.out.println("b_cnt: "+b_cnt);
-			if (b_min > b_cnt) b_min = b_cnt;
 		}
-		for (int[] arr : list) {
-			w_cnt = 0;
-			for (int i = arr[0]; i < arr[1]; i++) {// 0,0 Black¿œ∂ß,
-				for (int j = arr[2]; j < arr[3]; j++) {
-					if (i % 2 == 0) {// ¬¶ºˆ«‡
-						if (j % 2 == 0) {// ¬¶ºˆø≠
-							w_cnt += map[i][j] != 'W' ? 1 : 0;// ¬¶ºˆ«‡¿« ¬¶ºˆø≠¿∫ B
-						} else {// »¶ºˆø≠
-							w_cnt += map[i][j] != 'B' ? 1 : 0;// ¬¶ºˆ«‡¿« »¶ºˆø≠¿∫ W;
-						}
-					} else {// »¶ºˆ«‡
-						if (j % 2 != 1) {// »¶ºˆ«‡
-							w_cnt += map[i][j] != 'B' ? 1 : 0;
-						} else {// ¬¶ºˆ«‡
-							w_cnt += map[i][j] != 'W' ? 1 : 0;
-						}
-					}
+		// white
+		int w_cnt = 0;
+		for (int i = x; i < x + 8; i++) {
+			for (int j = y; j < y + 8; j++) {
+				if (map[i][j] != white[i - x].charAt(j - y)) {// white[i-x].charAt(j-y)// 0,0∫Œ≈Õ Ω√¿€«œ∞‘
+					w_cnt++;
 				}
 			}
-			System.out.println("w_cnt: "+w_cnt);
-			if(w_min>w_cnt) w_min=w_cnt;
-			
 		}
-		//System.out.println("w_min: "+w_min);
+		return Math.min(w_cnt, b_cnt);
+	}
+
+	public static int b_count(char[][] map, int x, int y) {
+		// black
+		// int b_x=-1,b_y=-1;
+		int b_cnt = 0;
+		for (int i = x; i < x + 8; i++) {
+			for (int j = y; j < y + 8; j++) {
+				if (map[i][j] != black[i - x].charAt(j - y)) {
+					b_cnt++;
+				}
+			}
+		}
+		return b_cnt;
+	}
+
+	public static int w_count(char[][] map, int x, int y) {
+
+		// white
+		int w_cnt = 0;
+		for (int i = x; i < x + 8; i++) {
+			for (int j = y; j < y + 8; j++) {
+				if (map[i][j] != white[i - x].charAt(j - y)) {// white[i-x].charAt(j-y)// 0,0∫Œ≈Õ Ω√¿€«œ∞‘
+					w_cnt++;
+				}
+			}
+		}
+		return w_cnt;
 	}
 
 }
