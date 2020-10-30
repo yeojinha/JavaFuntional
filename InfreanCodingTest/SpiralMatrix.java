@@ -20,15 +20,13 @@ public class SpiralMatrix {
 		int colEnd=arr[0].length-1;
 		int col=0;
 	
-		while(col<=colEnd && row <=rowEnd) {
-			
-			
+		while(col<=colEnd && row <=rowEnd) {		
 			for(int i=col;i<=colEnd;i++ ) {
-				list.add(arr[row][i]);//01020304
+				list.add(arr[row][i]);//00 01 02 03
 			}
 			row++;//1
 			for(int i=row;i<=rowEnd;i++) {
-				list.add(arr[i][colEnd]);//11 12 13 14
+				list.add(arr[i][colEnd]);//14 24 34
 			}
 			colEnd--;
 			if(row<=rowEnd)
@@ -37,10 +35,9 @@ public class SpiralMatrix {
 			}
 			rowEnd--;
 			if(col<=colEnd)
-				if(row<=rowEnd)
-			for(int i=rowEnd;i>=row;i--) {
+			for(int i=rowEnd;i>=row;i--) 
 				list.add(arr[rowEnd][col]);
-			}
+			
 			col++;
 			
 		}
