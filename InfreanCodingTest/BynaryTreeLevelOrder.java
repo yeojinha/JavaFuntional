@@ -43,7 +43,7 @@ public class BynaryTreeLevelOrder {
 			result.add(list);
 		}
 		return result;
-	}*///bfs는 stack으로 구현 불가능하다. 
+	}*///bfs -> queue dfs -> stack
 	public static List<List<Integer>> solve(TreeNode root) {
 		List<List<Integer>> result=new ArrayList<>();
 		if(root==null) {
